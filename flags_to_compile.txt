@@ -8,7 +8,7 @@ cc so_long.c -lmlx -lX11 -lXext
 
 ON MAC:
 
-cc so_long.c -lmlx -framework OpenGL -framework AppKit
+cc so_long.c -L. -lmlx -framework OpenGL -framework AppKit
 
     -lmlx: Links with the MiniLibX library
     -framework OpenGL: Mac's graphics framework

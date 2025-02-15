@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbicane <fbicane@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 20:41:56 by fbicane           #+#    #+#             */
-/*   Updated: 2025/02/15 10:32:48 by fbicane          ###   ########.fr       */
+/*   Created: 2024/10/22 11:02:19 by fbicane           #+#    #+#             */
+/*   Updated: 2025/01/29 15:29:21 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "so_long.h"*/
-/**/
-/*int	main(void)*/
-/*{*/
-/*	void	*mlx_ptr;*/
-/*	void	*mlx_win;*/
-/**/
-/*	mlx_ptr = mlx_init();*/
-/*	mlx_win = mlx_new_window(mlx_ptr, 500, 500, "so_long");*/
-/*	mlx_loop(mlx_ptr);*/
-/*}*/
+#include "../my_library.h"
+
+int	ft_isalpha(int ch)
+{
+	if ((ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122))
+		return (1);
+	else
+		return (0);
+}

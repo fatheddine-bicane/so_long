@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_nb_count.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbicane <fbicane@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 20:41:56 by fbicane           #+#    #+#             */
-/*   Updated: 2025/02/15 10:32:48 by fbicane          ###   ########.fr       */
+/*   Created: 2024/11/22 10:43:18 by fbicane           #+#    #+#             */
+/*   Updated: 2024/11/25 15:13:17 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "so_long.h"*/
-/**/
-/*int	main(void)*/
-/*{*/
-/*	void	*mlx_ptr;*/
-/*	void	*mlx_win;*/
-/**/
-/*	mlx_ptr = mlx_init();*/
-/*	mlx_win = mlx_new_window(mlx_ptr, 500, 500, "so_long");*/
-/*	mlx_loop(mlx_ptr);*/
-/*}*/
+#include "../my_library.h"
+
+int	ft_nb_count(long nb)
+{
+	int		count;
+
+	count = 0;
+	if (nb == 0)
+		return (1);
+	if (nb < 0)
+	{
+		nb *= -1;
+		count++;
+	}
+	while (nb > 0)
+	{
+		nb /= 10;
+		count++;
+	}
+	return (count);
+}

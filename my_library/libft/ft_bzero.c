@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbicane <fbicane@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 20:41:56 by fbicane           #+#    #+#             */
-/*   Updated: 2025/02/15 10:32:48 by fbicane          ###   ########.fr       */
+/*   Created: 2024/10/24 21:28:06 by fbicane           #+#    #+#             */
+/*   Updated: 2025/01/29 15:28:45 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "so_long.h"*/
-/**/
-/*int	main(void)*/
-/*{*/
-/*	void	*mlx_ptr;*/
-/*	void	*mlx_win;*/
-/**/
-/*	mlx_ptr = mlx_init();*/
-/*	mlx_win = mlx_new_window(mlx_ptr, 500, 500, "so_long");*/
-/*	mlx_loop(mlx_ptr);*/
-/*}*/
+#include "../my_library.h"
+
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*s_tc;
+	size_t			i;
+
+	s_tc = ((unsigned char *)(s));
+	i = 0;
+	while (i < n)
+	{
+		s_tc[i] = 0;
+		i++;
+	}
+}

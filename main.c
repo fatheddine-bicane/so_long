@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbicane <fbicane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 20:41:56 by fbicane           #+#    #+#             */
-/*   Updated: 2025/02/15 10:32:48 by fbicane          ###   ########.fr       */
+/*   Created: 2025/02/15 10:22:42 by fbicane           #+#    #+#             */
+/*   Updated: 2025/02/15 11:11:15 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "so_long.h"*/
-/**/
-/*int	main(void)*/
-/*{*/
-/*	void	*mlx_ptr;*/
-/*	void	*mlx_win;*/
-/**/
-/*	mlx_ptr = mlx_init();*/
-/*	mlx_win = mlx_new_window(mlx_ptr, 500, 500, "so_long");*/
-/*	mlx_loop(mlx_ptr);*/
-/*}*/
+#include "so_long.h"
+
+int	main(int argc, char **argv)
+{
+	char	**map;
+	int		i;
+
+	(void)argc;
+	map = ft_parce_map(argv[1]);
+	i = 0;
+	while (map[i])
+	{
+		ft_printf(map[i]);
+		ft_printf("\n");
+		i++;
+	}
+	ft_free(map);
+}

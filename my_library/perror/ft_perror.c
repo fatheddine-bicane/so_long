@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_perror.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbicane <fbicane@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: fbicane <fatheddine04@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 20:41:56 by fbicane           #+#    #+#             */
-/*   Updated: 2025/02/15 10:32:48 by fbicane          ###   ########.fr       */
+/*   Created: 2025/01/29 15:50:16 by fbicane           #+#    #+#             */
+/*   Updated: 2025/01/29 15:52:10 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "so_long.h"*/
-/**/
-/*int	main(void)*/
-/*{*/
-/*	void	*mlx_ptr;*/
-/*	void	*mlx_win;*/
-/**/
-/*	mlx_ptr = mlx_init();*/
-/*	mlx_win = mlx_new_window(mlx_ptr, 500, 500, "so_long");*/
-/*	mlx_loop(mlx_ptr);*/
-/*}*/
+#include "../my_library.h"
+
+void	ft_perror(const char *err_mssg)
+{
+	int	i;
+
+	i = -1;
+	while (err_mssg[++i])
+		write(2, &err_mssg[i], 1);
+}

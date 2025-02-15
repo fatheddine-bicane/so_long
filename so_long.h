@@ -16,6 +16,7 @@
 # include "./mlx.h"
 # include "./my_library/my_library.h"
 
+
 //map parsing functions
 char	**ft_read_map(char *argv);
 void	ft_check_extansion(char *argv);

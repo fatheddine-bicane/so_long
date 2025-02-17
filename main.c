@@ -26,5 +26,4 @@ int	main(int argc, char **argv)
 		ft_printf("\n");
 		i++;
 	}
-	ft_free(map);
 }

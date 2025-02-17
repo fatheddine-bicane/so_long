@@ -27,6 +27,14 @@ void	ft_free(char **arr_s)
 	free (arr_s);
 }
 
+void	ft_free_game(t_game **game)
+{
+	if ((*game)->map)
+		ft_free((*game)->map);
+	free(*game);
+	(*game) = NULL;
+}
+
 void	ft_throw_error_1(int error, char **map)
 {
 	if (error == 1)
@@ -52,15 +60,20 @@ void	ft_throw_error_1(int error, char **map)
 	exit(1);
 }
 
-void	ft_throw_error_2(int error, char *argv, char **map)
+void	ft_throw_error_2(int error, t_game **game, char **map)
 {
-	(void)argv;
 	if (error == 5)
 	{
 		ft_perror("Error: Invalid map components!\n");
 		ft_perror("Required: At least 1 coin (C), exactly 1");
 		ft_perror("player (P), and exactly 1 exit (E)\n");
 		ft_free(map);
+	}
+	if (error == 7)
+	{
+		ft_perror("Error: Ensure there are valid paths ");
+		ft_perror("to all collectibles and the exit\n");
+		ft_free_game(game);
 	}
 	exit(1);
 }

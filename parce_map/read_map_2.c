@@ -68,6 +68,7 @@ void	ft_map_components(char **map)
 char	**ft_parce_map(char *argv)
 {
 	char	**map;
+	t_game	*game;
 
 	ft_check_extansion(argv);
 	map = ft_read_map(argv);
@@ -76,5 +77,12 @@ char	**ft_parce_map(char *argv)
 	ft_check_map_valid(map);
 	ft_map_walls(map);
 	ft_map_components(map);
+	game = malloc(sizeof(t_game));
+	if (!game)
+		return (ft_free(map), NULL);
+	game->map = map;
+	/*ft_free(map);*/
+	ft_set_P_position(&game);
+	ft_check_points(&game);
 	return (map);
 }

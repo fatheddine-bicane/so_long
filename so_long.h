@@ -28,9 +28,10 @@ typedef struct s_comp_credit
 typedef struct s_game
 {
 	char	**map;
-	int		player_x_position;
-	int		player_y_position;
-
+	int		P_x_pos;
+	int		P_y_pos;
+	int		rows_count;
+	int		indexes_count;
 }	t_game;
 
 //map parsing functions
@@ -39,10 +40,15 @@ void	ft_check_extansion(char *argv);
 char	**ft_parce_map(char *argv);
 void	ft_check_map_valid(char **map);
 void	ft_map_walls(char **map);
+void	ft_flood_fill(t_game *game, char ***map_copy, int p_x_pos, int p_y_pos);
+void	ft_set_P_position(t_game **game);
+void	ft_check_points(t_game **game);
+void	ft_check_points(t_game **game);
 
-//error hamdling functions
-void	ft_throw_error_1(int error, char **map);
-void	ft_throw_error_2(int error, char *argv, char **map);
+//error handling functions
 void	ft_free(char **arr_s);
+void	ft_free_game(t_game **game);
+void	ft_throw_error_1(int error, char **map);
+void	ft_throw_error_2(int error, t_game **game, char **map);
 
 #endif

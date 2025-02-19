@@ -1,51 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   floodfill.c                                        :+:      :+:    :+:   */
+/*   read_map_3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbicane <fbicane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 22:00:07 by fbicane           #+#    #+#             */
-/*   Updated: 2025/02/16 22:52:25 by fbicane          ###   ########.fr       */
+/*   Updated: 2025/02/19 15:49:21 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
 //this function will check if the collectibles and the exit are all reachable
-void	ft_check_points(t_game **game)
+void	ft_check_points(t_game **game, char *argv)
 {
-	int	i;
-	int	r;
+	int		i;
+	int		r;
 	char	**map_copy;
 
-	i = 0;
 	r = 0;
-	map_copy = (*game)->map;
+	map_copy = ft_read_map(argv, game);
 	ft_flood_fill((*game), &map_copy, (*game)->P_x_pos, (*game)->P_y_pos);
 	while (map_copy[r])
 	{
+		i = 0;
 		while (map_copy[r][i])
 		{
 			if (map_copy[r][i] != '1' && map_copy[r][i] != '.')
-				ft_throw_error_2(7, game, NULL);
+			{
+				ft_free(map_copy);
+				ft_throw_error_2(7, game);
+			}
 			i++;
 		}
 		r++;
 	}
+	ft_free(map_copy);
 }
 
 //this function will set the player position and the number of rows and indexes
-void	ft_set_P_position(t_game **game)
+void	ft_set_p_position(t_game **game)
 {
 	int	i;
 	int	r;
 
-	i = 0;
 	r = 1;
-
 	while ((*game)->map[r])
 	{
+		i = 0;
 		while ((*game)->map[r][i])
 		{
 			if ((*game)->map[r][i] == 'P')
@@ -61,14 +64,6 @@ void	ft_set_P_position(t_game **game)
 	(*game)->indexes_count = i - 1;
 }
 
-/*void	ft_E_C_accebile(t_game **game)*/
-/*{*/
-/*	char	**map_copy;*/
-/**/
-/*	map_copy = (*game)->map;*/
-/*	ft_flood_fill((*game), &map_copy, (*game)->P_x_pos, (*game)->P_y_pos);*/
-/*	ft_check_points()*/
-/*}*/
 
 void	ft_flood_fill(t_game *game, char ***map_copy, int p_x_pos, int p_y_pos)
 {

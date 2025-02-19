@@ -6,7 +6,7 @@
 /*   By: fbicane <fbicane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:47:30 by fbicane           #+#    #+#             */
-/*   Updated: 2025/02/16 16:47:59 by fbicane          ###   ########.fr       */
+/*   Updated: 2025/02/19 15:49:50 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,53 +36,45 @@ int	ft_map_components_utils(t_comp_credit *comp_credit, char *map_line)
 }
 
 //this is a function that cheks for the components of the map(P, C, E, 1, 0)
-void	ft_map_components(char **map)
+void	ft_map_components(t_game **game)
 {
-	int				i;
+	/*int				i;*/
 	int				r;
 	int				check;
 	t_comp_credit	comp_credit;
 
-	i = 0;
+	/*i = 0;*/
 	r = 0;
 	comp_credit.coin_credit = 0;
 	comp_credit.player_credit = 0;
 	comp_credit.exit_credit = 0;
 	comp_credit.enemies_credit = 0;
-	while (map[r])
+	while ((*game)->map[r])
 	{
-		check = ft_map_components_utils(&comp_credit, map[r]);
+		check = ft_map_components_utils(&comp_credit, (*game)->map[r]);
 		if (!check)
-			ft_throw_error_2(5, NULL, map);
+			ft_throw_error_2(5, game);
 		r++;
 	}
 	if (comp_credit.coin_credit < 1)
-		ft_throw_error_2(5, NULL, map);
+		ft_throw_error_2(5, game);
 	if (comp_credit.enemies_credit < 1)
-		ft_throw_error_2(5, NULL, map);
+		ft_throw_error_2(5, game);
 	if (comp_credit.player_credit != 1 || comp_credit.exit_credit != 1)
-		ft_throw_error_2(5, NULL, map);
+		ft_throw_error_2(5, game);
+	(*game)->coins_credit = comp_credit.coin_credit;
 }
 
 //this function uses all the map utility functions to initialize the map
-char	**ft_parce_map(char *argv)
+void	ft_parce_map(char *argv, t_game **game)
 {
-	char	**map;
-	t_game	*game;
-
-	ft_check_extansion(argv);
-	map = ft_read_map(argv);
-	if (!map)
-		ft_throw_error_1(6, NULL);
-	ft_check_map_valid(map);
-	ft_map_walls(map);
-	ft_map_components(map);
-	game = malloc(sizeof(t_game));
-	if (!game)
-		return (ft_free(map), NULL);
-	game->map = map;
-	/*ft_free(map);*/
-	ft_set_P_position(&game);
-	ft_check_points(&game);
-	return (map);
+	ft_check_extansion(argv, game);
+	(*game)->map = ft_read_map(argv, game);
+	if (!(*game)->map)
+		ft_throw_error_1(6, game);
+	ft_check_map_valid(game);
+	ft_map_walls(game);
+	ft_map_components(game);
+	ft_set_p_position(game);
+	ft_check_points(game, argv);
 }

@@ -19,6 +19,7 @@ SRCS = 	$(shell ls ./librarys/my_library/libft/*.c) \
 		$(shell ls ./librarys/my_library/perror/*.c) \
 		$(shell ls ./error_handling/*.c) \
 		$(shell ls ./parce_map/*.c) \
+		$(shell ls ./window_managment/*.c) \
 		main.c
 
 

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   draw_ground_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbicane <fbicane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 20:41:56 by fbicane           #+#    #+#             */
-/*   Updated: 2025/02/19 12:34:26 by fbicane          ###   ########.fr       */
+/*   Created: 2025/02/19 15:13:04 by fbicane           #+#    #+#             */
+/*   Updated: 2025/02/19 15:52:25 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-int	main(void)
+/*void	ft_load_ground(t_game **game)*/
+/*{*/
+/**/
+/*}*/
+
+void	ft_render_map(t_game **game)
 {
-	void	*mlx_ptr;
-	void	*mlx_win;
-	void	*background;
-	int		height;
-	int		width;
-
-	/*(void)mlx_win;*/
-	mlx_ptr = mlx_init();
-	mlx_win = mlx_new_window(mlx_ptr, 12 * 32, 5 * 32, "so_long");
-	background = mlx_xpm_file_to_image(mlx_ptr, "./sprites/background_town1.xpm", &width, &height);
-	mlx_put_image_to_window(mlx_ptr, mlx_win, background, 0, 0);
-	mlx_loop(mlx_ptr);
+	(*game)->ground = mlx_xpm_file_to_image((*game)->mlx_ptr, "./sprites/ground/ground_map.xpm", &(*game)->width, &(*game)->height);
+	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr, (*game)->ground, 4 * (*game)->width, 1 * (*game)->height);
 }
+

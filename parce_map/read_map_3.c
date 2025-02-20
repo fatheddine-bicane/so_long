@@ -22,12 +22,19 @@ void	ft_check_points(t_game **game, char *argv)
 	r = 0;
 	map_copy = ft_read_map(argv, game);
 	ft_flood_fill((*game), &map_copy, (*game)->P_x_pos, (*game)->P_y_pos);
+	/*i = 0;*/
+	/*while (map_copy[i])*/
+	/*{*/
+	/*	ft_printf(map_copy[i]);*/
+	/*	ft_printf("\n");*/
+	/*	i++;*/
+	/*}*/
 	while (map_copy[r])
 	{
 		i = 0;
 		while (map_copy[r][i])
 		{
-			if (map_copy[r][i] != '1' && map_copy[r][i] != '.')
+			if (map_copy[r][i] == 'E')
 			{
 				ft_free(map_copy);
 				ft_throw_error_2(7, game);
@@ -45,7 +52,7 @@ void	ft_set_p_position(t_game **game)
 	int	i;
 	int	r;
 
-	r = 1;
+	r = 0;
 	while ((*game)->map[r])
 	{
 		i = 0;
@@ -60,18 +67,18 @@ void	ft_set_p_position(t_game **game)
 		}
 		r++;
 	}
-	(*game)->rows_count = r - 1;
-	(*game)->indexes_count = i - 1;
+	(*game)->rows_count = r;
+	(*game)->indexes_count = i;
 }
 
 
 void	ft_flood_fill(t_game *game, char ***map_copy, int p_x_pos, int p_y_pos)
 {
 	/*printf("HELLO");*/
-	 if (p_x_pos > game->rows_count || p_y_pos > game->indexes_count
+	 if (p_x_pos >= game->rows_count || p_y_pos >= game->indexes_count
 		|| p_x_pos < 0 || p_y_pos < 0)
 		return ;
-	if ((*map_copy)[p_x_pos][p_y_pos] == '.' || (*map_copy)[p_x_pos][p_y_pos] == '1')
+	if ((*map_copy)[p_x_pos][p_y_pos] == '.' || (*map_copy)[p_x_pos][p_y_pos] == '1' || (*map_copy)[p_x_pos][p_y_pos] == 'X')
 		return ;
 	(*map_copy)[p_x_pos][p_y_pos] = '.';
 	ft_flood_fill(game, map_copy, p_x_pos + 1, p_y_pos);

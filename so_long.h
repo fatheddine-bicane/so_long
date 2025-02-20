@@ -38,9 +38,13 @@ typedef struct s_game
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*background;
-	void	*ground[14];
+	void	*ground[9];
 	int		height;
 	int		width;
+	void	*door;
+	void	*background_1;
+	void	*idle;
+	void	*scroll;
 }	t_game;
 
 //map parsing functions

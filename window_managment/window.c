@@ -29,7 +29,7 @@ void	ft_open_win(t_game **game)
 	/*mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr, (*game)->background, 0, 0);*/
 	ft_render_map(game);
 
-	mlx_hook((*game)->win_ptr, 2, 1L << 0, ft_move_player, (*game));
+	mlx_hook((*game)->win_ptr, 2, 1L << 0, ft_move_player, game);
 
 	//close with x
 	mlx_hook((*game)->win_ptr, 17, 0, ft_close, NULL);

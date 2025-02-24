@@ -68,5 +68,6 @@ void	ft_open_win(t_game **game);
 void	ft_render_map(t_game **game);
 
 int	ft_move_player(int key_code, t_game **game);
+int	ft_close();
 
 #endif

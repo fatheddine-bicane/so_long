@@ -38,7 +38,7 @@ typedef struct s_game
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*background;
-	void	*ground[9];
+	void	*ground[4];
 	int		height;
 	int		width;
 	void	*door;
@@ -66,4 +66,7 @@ void	ft_throw_error_2(int error, t_game **game);
 //window managent
 void	ft_open_win(t_game **game);
 void	ft_render_map(t_game **game);
+
+int	ft_move_player(int key_code, t_game **game);
+
 #endif

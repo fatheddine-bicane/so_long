@@ -60,8 +60,8 @@ void	ft_set_p_position(t_game **game)
 		{
 			if ((*game)->map[r][i] == 'P')
 			{
-				(*game)->P_x_pos = r;
-				(*game)->P_y_pos = i;
+				(*game)->P_x_pos = i;
+				(*game)->P_y_pos = r;
 			}
 			i++;
 		}

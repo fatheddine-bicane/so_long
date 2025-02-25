@@ -19,6 +19,11 @@ char	is_valid_move(t_game **game, int x, int y)
 	if (x < 0 || y < 0 || x >= (*game)->indexes_count || y >= (*game)->rows_count)
 		return (0);
 	tile = (*game)->map[y][x];
+	if (tile == 'C')
+	{
+		(*game)->coins_credit--;
+		/*return ()*/
+	}
 	return (tile == '0' || tile == 'C' || tile == 'E' || tile == 'X');
 }
 
@@ -29,6 +34,8 @@ void	move_player(t_game **game, int new_x, int new_y)
 	(*game)->P_x_pos = new_x;
 	(*game)->P_y_pos = new_y;
 	(*game)->map[(*game)->P_y_pos][(*game)->P_x_pos] = 'P';
+	(*game)->mouve_count++;
+	ft_printf("Moves: %d\n", (*game)->mouve_count);
 }
 
 int	ft_move_player(int key_code, t_game **game)
@@ -36,31 +43,45 @@ int	ft_move_player(int key_code, t_game **game)
 	int	new_x_p;
 	int	new_y_p;
 
-	printf("Key pressed: %d\n", key_code);
-	new_x_p = (*game)->P_x_pos;  // Start with current position
+	new_x_p = (*game)->P_x_pos;
 	new_y_p = (*game)->P_y_pos;
 	
-	// Calculate NEW position based on key (don't modify original position yet)
 	if (key_code == 65307)
-		ft_close();
-	else if (key_code == 119)      // W key
+	{
+		ft_close(game);
+	}
+	else if (key_code == 119)
 	{
 		new_y_p--;
 	}	
-	else if (key_code == 115) // S key
+	else if (key_code == 115)
 		new_y_p++;
-	else if (key_code == 97)  // A key
+	else if (key_code == 97)
 		new_x_p--;
-	else if (key_code == 100) // D key
+	else if (key_code == 100)
 		new_x_p++;
 	
 	if (is_valid_move(game, new_x_p, new_y_p))
 	{
-		move_player(game, new_x_p, new_y_p);
-		ft_render_map(game);
+		if ((*game)->map[new_y_p][new_x_p] == 'E')
+		{
+			if ((*game)->coins_credit == 0)
+			{
+				move_player(game, new_x_p, new_y_p);
+				ft_render_map(game);
+				ft_close(game);
+			}
+		}
+		else if ((*game)->map[new_y_p][new_x_p] != 'E')
+		{
+			move_player(game, new_x_p, new_y_p);
+			ft_render_map(game);
+		}
 	}
 	return (0);
 }
+
+
 
 /*int	ft_move_player(int key_code, t_game **game)*/
 /*{*/

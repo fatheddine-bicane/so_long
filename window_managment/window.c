@@ -27,6 +27,7 @@ void	ft_open_win(t_game **game)
 	(*game)->win_ptr = mlx_new_window((*game)->mlx_ptr, (*game)->indexes_count * TILE_SIZE, (*game)->rows_count * TILE_SIZE, "so_long");
 	(*game)->background = mlx_xpm_file_to_image((*game)->mlx_ptr, "./sprites/background_Town1.xpm", &width, &height);
 	/*mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr, (*game)->background, 0, 0);*/
+	ft_load_ground(game);
 	ft_render_map(game);
 
 	mlx_hook((*game)->win_ptr, 2, 1L << 0, ft_move_player, game);

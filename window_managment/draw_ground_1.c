@@ -40,7 +40,7 @@ void	ft_render_map(t_game **game)
 	int	i;
 
 	r = 0;
-	ft_load_ground(game);
+	/*ft_load_ground(game);*/
 	while ((*game)->map[r])
 	{
 		i = 0;

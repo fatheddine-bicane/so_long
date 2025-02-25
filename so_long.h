@@ -69,5 +69,6 @@ void	ft_render_map(t_game **game);
 
 int	ft_move_player(int key_code, t_game **game);
 int	ft_close();
+void	ft_load_ground(t_game **game);
 
 #endif

@@ -81,8 +81,6 @@ int	ft_move_player(int key_code, t_game **game)
 	return (0);
 }
 
-
-
 /*int	ft_move_player(int key_code, t_game **game)*/
 /*{*/
 /*	int	new_x_p;*/

@@ -48,6 +48,11 @@ typedef struct s_game
 	int		mouve_count;
 }	t_game;
 
+# define RL (r == (*game)->rows_count - 1)
+# define RF (r == 0)
+# define IL (i == (*game)->indexes_count - 1)
+# define IF (i == 0)
+
 //map parsing functions
 void	ft_parce_map(char *argv, t_game **game);
 char	**ft_read_map(char *argv, t_game **game);

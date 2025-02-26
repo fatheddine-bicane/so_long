@@ -33,8 +33,8 @@ void	ft_free_game_utils(t_game **game)
 		ft_free((*game)->map);
 	if ((*game)->door)
 		mlx_destroy_image((*game)->mlx_ptr, (*game)->door);
-	if ((*game)->idle)
-		mlx_destroy_image((*game)->mlx_ptr, (*game)->idle);
+	/*if ((*game)->idle)*/
+	/*	mlx_destroy_image((*game)->mlx_ptr, (*game)->idle);*/
 	if ((*game)->coin)
 		mlx_destroy_image((*game)->mlx_ptr, (*game)->coin);
 	if ((*game)->ground)

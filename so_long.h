@@ -43,8 +43,9 @@ typedef struct s_game
 	void	*boarder[3];
 	int		width;
 	void	*door;
-	void	*idle;
-	void	*coin;
+	void	*idle_r[4];
+	void	*attack_r[4];
+	void	*coin[4];
 	int		mouve_count;
 }	t_game;
 

@@ -16,7 +16,7 @@
 int	ft_map_components_utils(t_comp_credit *comp_credit, char *map_line)
 {
 	int	i;
-
+	
 	i = 0;
 	while (map_line[i])
 	{

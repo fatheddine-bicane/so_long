@@ -35,8 +35,8 @@ void	ft_free_game_utils(t_game **game)
 		mlx_destroy_image((*game)->mlx_ptr, (*game)->door);
 	/*if ((*game)->idle)*/
 	/*	mlx_destroy_image((*game)->mlx_ptr, (*game)->idle);*/
-	if ((*game)->coin)
-		mlx_destroy_image((*game)->mlx_ptr, (*game)->coin);
+	/*if ((*game)->coin)*/
+	/*	mlx_destroy_image((*game)->mlx_ptr, (*game)->coin);*/
 	if ((*game)->ground)
 		mlx_destroy_image((*game)->mlx_ptr, (*game)->ground);
 }
@@ -47,12 +47,12 @@ void	ft_free_game(t_game **game)
 
 	i = 0;
 	ft_free_game_utils(game);
-	while (i < 2)
-	{
-		if ((*game)->trees[i])
-			mlx_destroy_image((*game)->mlx_ptr, (*game)->trees[i]);
-		i++;
-	}
+	/*while (i < 2)*/
+	/*{*/
+	/*	if ((*game)->trees[i])*/
+	/*		mlx_destroy_image((*game)->mlx_ptr, (*game)->trees[i]);*/
+	/*	i++;*/
+	/*}*/
 	i = 0;
 	while (i < 3)
 	{

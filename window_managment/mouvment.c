@@ -6,7 +6,7 @@
 /*   By: fbicane <fbicane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:12:51 by fbicane           #+#    #+#             */
-/*   Updated: 2025/02/24 17:26:20 by fbicane          ###   ########.fr       */
+/*   Updated: 2025/02/27 10:58:17 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	ft_move_player_utils(t_game **game, int new_x_p, int new_y_p)
 			ft_render_map(game);
 			ft_close(game);
 		}
+	}
+	else if ((*game)->map[new_y_p][new_x_p] == 'X')
+	{
+		ft_printf("Game Over: You touched an enemy and lost!\n");
+		ft_close(game);
 	}
 	else if ((*game)->map[new_y_p][new_x_p] != 'E')
 	{

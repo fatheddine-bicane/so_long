@@ -6,7 +6,7 @@
 /*   By: fbicane <fbicane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:29:18 by fbicane           #+#    #+#             */
-/*   Updated: 2025/02/25 16:03:10 by fbicane          ###   ########.fr       */
+/*   Updated: 2025/02/27 10:40:37 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,18 @@ typedef struct s_game
 	void	*win_ptr;
 	void	*ground;
 	int		height;
-	void	*trees[2];
+	void	*trees;
 	void	*boarder[3];
 	int		width;
 	void	*door;
 	void	*idle_r[4];
 	void	*attack_r[4];
 	void	*coin[4];
+	void	*walo;
+	void	*skeleton;
+	int		enm_count;
 	int		mouve_count;
+	int		ignore_exit;
 }	t_game;
 
 //map parsing functions
@@ -59,6 +63,10 @@ void	ft_flood_fill(t_game *game, char ***map_copy, int p_x_pos, int p_y_pos);
 void	ft_set_p_position(t_game **game);
 void	ft_check_points(t_game **game, char *argv);
 void	ft_map_components(t_game **game);
+
+int	is_path_to_exit(t_game **game, char *argv);
+int	is_path_to_collect(t_game **game, char *argv);
+
 
 //error handling functions
 void	ft_free(char **arr_s);
@@ -75,5 +83,6 @@ int		ft_move_player(int key_code, t_game **game);
 int		ft_close(t_game **game);
 void	ft_load_ground(t_game **game);
 int		pick_tree(void);
+int	ft_render_map_2(t_game **game);
 
 #endif

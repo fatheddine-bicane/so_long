@@ -27,32 +27,20 @@ void	ft_free(char **arr_s)
 	free (arr_s);
 }
 
-void	ft_free_game_utils(t_game **game)
+static void	ft_free_game_utils(t_game **game)
 {
 	if ((*game)->map)
 		ft_free((*game)->map);
 	if ((*game)->door)
 		mlx_destroy_image((*game)->mlx_ptr, (*game)->door);
-	/*if ((*game)->idle)*/
-	/*	mlx_destroy_image((*game)->mlx_ptr, (*game)->idle);*/
-	/*if ((*game)->coin)*/
-	/*	mlx_destroy_image((*game)->mlx_ptr, (*game)->coin);*/
 	if ((*game)->ground)
 		mlx_destroy_image((*game)->mlx_ptr, (*game)->ground);
 }
 
-void	ft_free_game(t_game **game)
+static void	ft_free_game_utils_2(t_game **game)
 {
 	int	i;
 
-	i = 0;
-	ft_free_game_utils(game);
-	/*while (i < 2)*/
-	/*{*/
-	/*	if ((*game)->trees[i])*/
-	/*		mlx_destroy_image((*game)->mlx_ptr, (*game)->trees[i]);*/
-	/*	i++;*/
-	/*}*/
 	i = 0;
 	while (i < 3)
 	{
@@ -66,6 +54,42 @@ void	ft_free_game(t_game **game)
 	free((*game)->mlx_ptr);
 	free(*game);
 	(*game) = NULL;
+}
+
+void	ft_free_game(t_game **game)
+{
+	int	i;
+
+	i = 0;
+	ft_free_game_utils(game);
+	if ((*game)->trees)
+		mlx_destroy_image((*game)->mlx_ptr, (*game)->trees);
+	if ((*game)->skeleton)
+		mlx_destroy_image((*game)->mlx_ptr, (*game)->skeleton);
+	if ((*game)->walo)
+		mlx_destroy_image((*game)->mlx_ptr, (*game)->walo);
+	while (i < 4)
+	{
+		if ((*game)->coin[i])
+			mlx_destroy_image((*game)->mlx_ptr, (*game)->coin[i]);
+		if ((*game)->idle_r[i])
+			mlx_destroy_image((*game)->mlx_ptr, (*game)->idle_r[i]);
+		i++;
+	}
+	ft_free_game_utils_2(game);
+	/*i = 0;*/
+	/*while (i < 3)*/
+	/*{*/
+	/*	if ((*game)->boarder[i])*/
+	/*		mlx_destroy_image((*game)->mlx_ptr, (*game)->boarder[i]);*/
+	/*	i++;*/
+	/*}*/
+	/*mlx_clear_window((*game)->mlx_ptr, (*game)->win_ptr);*/
+	/*mlx_destroy_window((*game)->mlx_ptr, (*game)->win_ptr);*/
+	/*mlx_destroy_display((*game)->mlx_ptr);*/
+	/*free((*game)->mlx_ptr);*/
+	/*free(*game);*/
+	/*(*game) = NULL;*/
 }
 
 void	ft_free_game_2(t_game **game)

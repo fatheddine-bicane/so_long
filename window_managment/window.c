@@ -46,12 +46,11 @@ void	ft_render_map_utils_2(t_game **game, int r, int i)
 
 void	ft_move_enem_utils(t_game **game, int *direction, int *i, int *r)
 {
-	while ((*game)->map[(*r)])
+	(*i) = 0;
+	while ((*game)->map[(*r)][(*i)])
 	{
-		(*i) = 0;
 		if ((*game)->map[(*r)][(*i)] == 'X' && (*game)->map[(*r)][(*i) + 1] == '0' && (*direction) == 1)
 		{
-			/*printf("wach dkhlti?");*/
 			(*direction) = +1;
 			(*game)->map[(*r)][(*i)] = '0';
 			(*game)->map[(*r)][(*i) + 1] = 'X';
@@ -86,31 +85,32 @@ void	ft_move_enem(t_game **game)
 		int (r) = 0;
 		while ((*game)->map[r])
 		{
-			i = 0;
-			while ((*game)->map[r][i])
-			{
-				if ((*game)->map[r][i] == 'X'  && (*game)->map[r][i + 1] == '0' && direction == 1)
-				{
-					direction = +1;
-					(*game)->map[r][i] = '0';
-					(*game)->map[r][i + 1] = 'X';
-					i+= 2;
-					continue;
-				}
-				if ((*game)->map[r][i] == 'X')
-					direction = -1;
-				if ((*game)->map[r][i] == 'X' && (*game)->map[r][i - 1] == '0' && direction == -1)
-				{
-					direction = -1;
-					(*game)->map[r][i] = '0';
-					(*game)->map[r][i - 1] = 'X';
-					i++;
-					continue;
-				}
-				if ((*game)->map[r][i] == 'X')
-					direction = +1;
-				i++;
-			}
+			/*i = 0;*/
+			ft_move_enem_utils(game, &direction, &i, &r);
+			/*while ((*game)->map[r][i])*/
+			/*{*/
+			/*	if ((*game)->map[r][i] == 'X'  && (*game)->map[r][i + 1] == '0' && direction == 1)*/
+			/*	{*/
+			/*		direction = +1;*/
+			/*		(*game)->map[r][i] = '0';*/
+			/*		(*game)->map[r][i + 1] = 'X';*/
+			/*		i+= 2;*/
+			/*		continue;*/
+			/*	}*/
+			/*	if ((*game)->map[r][i] == 'X')*/
+			/*		direction = -1;*/
+			/*	if ((*game)->map[r][i] == 'X' && (*game)->map[r][i - 1] == '0' && direction == -1)*/
+			/*	{*/
+			/*		direction = -1;*/
+			/*		(*game)->map[r][i] = '0';*/
+			/*		(*game)->map[r][i - 1] = 'X';*/
+			/*		i++;*/
+			/*		continue;*/
+			/*	}*/
+			/*	if ((*game)->map[r][i] == 'X')*/
+			/*		direction = +1;*/
+			/*	i++;*/
+			/*}*/
 			r++;
 		}
 	}

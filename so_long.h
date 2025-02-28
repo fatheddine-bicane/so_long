@@ -27,6 +27,12 @@ typedef struct s_comp_credit
 	int	exit_credit;
 }	t_comp_credit;
 
+/*typedef struct s_delay*/
+/*{*/
+/*	static int direction;*/
+/*	static int delay;*/
+/*}	t_delay;*/
+
 typedef struct s_game
 {
 	char	**map;

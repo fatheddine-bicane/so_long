@@ -40,6 +40,7 @@ void	ft_move_player_utils(t_game **game, int new_x_p, int new_y_p)
 		{
 			move_player(game, new_x_p, new_y_p);
 			ft_render_map(game);
+			ft_printf("CONGRATULATIONS, YOU WON!\n");
 			ft_close(game);
 		}
 	}

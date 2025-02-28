@@ -26,10 +26,14 @@ int	main(int argc, char **argv)
 {
 	t_game	*game;
 
-	(void)argc;
-	game = malloc(sizeof(t_game));
-	if (!game)
-		return (1);
-	ft_parce_map(argv[1], &game);
-	ft_open_win(&game);
+	if (argc == 2)
+	{
+		game = malloc(sizeof(t_game));
+		if (!game)
+			return (1);
+		ft_parce_map(argv[1], &game);
+		ft_open_win(&game);
+	}
+	else
+		ft_printf("Choose one map please\n");
 }

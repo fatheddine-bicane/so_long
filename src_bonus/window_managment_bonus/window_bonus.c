@@ -62,7 +62,7 @@ void	ft_mouve_count(t_game **game)
 static void	ft_frames(int *frame, int *index)
 {
 	(*frame)++;
-	if ((*frame) % 30 == 0)
+	if ((*frame) % 10 == 0)
 		(*index)++;
 	if ((*index) == 4)
 		(*index) = 0;

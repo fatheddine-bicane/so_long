@@ -115,9 +115,6 @@ void	ft_render_map(t_game **game)
 				mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr,
 					(*game)->idle[1], i * (*game)->width,
 					r * (*game)->height);
-			else if ((*game)->map[r][i] == 'C')
-				mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr,
-					(*game)->coin[0], i * (*game)->width, r * (*game)->height);
 			else if ((*game)->map[r][i] == 'X')
 				mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr,
 					(*game)->skeleton, i * (*game)->width, r * (*game)->height);

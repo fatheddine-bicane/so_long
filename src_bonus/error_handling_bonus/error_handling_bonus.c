@@ -6,11 +6,11 @@
 /*   By: fbicane <fbicane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 19:49:27 by fbicane           #+#    #+#             */
-/*   Updated: 2025/02/19 15:50:55 by fbicane          ###   ########.fr       */
+/*   Updated: 2025/02/28 16:02:44 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	ft_throw_error_1(int error, t_game **game)
 {
@@ -47,7 +47,7 @@ void	ft_throw_error_2(int error, t_game **game)
 	{
 		ft_perror("Error: Invalid map components!\n");
 		ft_perror("Required: At least 1 coin (C), exactly 1 ");
-		ft_perror("player (P), and exactly 1 exit (E)\n");
+		ft_perror("player (P), at leas 1 enemy (X) and exactly 1 exit (E)\n");
 		ft_free_game_2(game);
 	}
 	else if (error == 7)
@@ -66,5 +66,11 @@ void	ft_throw_error_2(int error, t_game **game)
 		ft_perror("Invalid asset filename detected\n");
 		ft_free_game(game);
 	}
+	exit(1);
+}
+
+int	ft_close(t_game **game)
+{
+	ft_free_game(game);
 	exit(1);
 }

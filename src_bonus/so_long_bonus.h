@@ -6,23 +6,23 @@
 /*   By: fbicane <fbicane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:29:18 by fbicane           #+#    #+#             */
-/*   Updated: 2025/02/25 16:03:10 by fbicane          ###   ########.fr       */
+/*   Updated: 2025/02/28 16:01:11 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <mlx.h>
 # include "../librarys/my_library/my_library.h"
 
 # define TILE_SIZE 32
 
-//struct for the game component
 typedef struct s_comp_credit
 {
 	int	coin_credit;
 	int	player_credit;
+	int	enemies_credit;
 	int	exit_credit;
 }	t_comp_credit;
 
@@ -42,10 +42,14 @@ typedef struct s_game
 	void	*boarder[3];
 	int		width;
 	void	*door;
-	void	*idle;
-	void	*coin;
-	int		ignore_exit;
+	void	*idle[4];
+	void	*attack_r[4];
+	void	*coin[4];
+	void	*walo;
+	void	*skeleton;
+	int		enm_count;
 	int		mouve_count;
+	int		ignore_exit;
 }	t_game;
 
 //map parsing functions
@@ -65,14 +69,16 @@ void	ft_free_game(t_game **game);
 void	ft_free_game_2(t_game **game);
 void	ft_throw_error_1(int error, t_game **game);
 void	ft_throw_error_2(int error, t_game **game);
+int		ft_close(t_game **game);
 
 //window managent
 void	ft_open_win(t_game **game);
 void	ft_render_map(t_game **game);
-
-int		ft_move_player(int key_code, t_game **game);
-int		ft_close(t_game **game);
+int		ft_render_map_2(t_game **game);
 void	ft_load_ground(t_game **game);
-int		pick_tree(void);
+
+//mouvment functions
+int		ft_move_player(int key_code, t_game **game);
+void	ft_move_enem(t_game **game);
 
 #endif

@@ -26,7 +26,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
-
 //get_next_line
 /*----------------------------------*/
 # ifndef BUFFER_SIZE

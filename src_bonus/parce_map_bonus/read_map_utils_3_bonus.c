@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 static void	ft_is_path_to_collect(t_game **game, char *argv)
 {
@@ -98,11 +98,14 @@ void	ft_set_p_position(t_game **game)
 
 void	ft_flood_fill(t_game *game, char ***map_copy, int p_x_pos, int p_y_pos)
 {
-	if (p_x_pos >= game->rows_count || p_y_pos >= game->indexes_count
-		|| p_x_pos < 0 || p_y_pos < 0)
+	if (p_x_pos < 0 || p_y_pos < 0 || p_x_pos >= game->rows_count
+		|| p_y_pos >= game->indexes_count)
 		return ;
-	if ((*map_copy)[p_x_pos][p_y_pos] == '.' ||
-		(*map_copy)[p_x_pos][p_y_pos] == '1')
+	if ((*map_copy)[p_x_pos][p_y_pos] == '1'
+		|| (*map_copy)[p_x_pos][p_y_pos] == '.'
+		|| (*map_copy)[p_x_pos][p_y_pos] == 'X')
+		return ;
+	if (game->ignore_exit == 1 && (*map_copy)[p_x_pos][p_y_pos] == 'E')
 		return ;
 	(*map_copy)[p_x_pos][p_y_pos] = '.';
 	ft_flood_fill(game, map_copy, p_x_pos + 1, p_y_pos);

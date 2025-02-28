@@ -17,13 +17,20 @@ SRCS = 	$(shell ls ./librarys/my_library/libft/*.c) \
 		$(shell ls ./librarys/my_library/ft_printf/*.c) \
 		$(shell ls ./librarys/my_library/get_next_line/*.c) \
 		$(shell ls ./librarys/my_library/perror/*.c) \
-		$(shell ls ./error_handling/*.c) \
-		$(shell ls ./parce_map/*.c) \
-		$(shell ls ./window_managment/*.c) \
-		main.c
+		$(shell ls ./src_mandatory/error_handling/*.c) \
+		$(shell ls ./src_mandatory/parce_map/*.c) \
+		$(shell ls ./src_mandatory/window_managment/*.c) \
+		./src_mandatory/main.c \
 
 
-BONUS =
+BONUS =	$(shell ls ./librarys/my_library/libft/*.c) \
+		$(shell ls ./librarys/my_library/ft_printf/*.c) \
+		$(shell ls ./librarys/my_library/get_next_line/*.c) \
+		$(shell ls ./librarys/my_library/perror/*.c) \
+		$(shell ls ./src_bonus/error_handling_bonus/*.c) \
+		$(shell ls ./src_bonus/parce_map_bonus/*.c) \
+		$(shell ls ./src_bonus/window_managment_bonus/*.c) \
+		./src_bonus/main_bonus.c \
 
 OFILES = $(SRCS:.c=.o)
 BOFILES = $(BONUS:.c=.o)
@@ -41,7 +48,7 @@ $(NAME): $(OFILES)
 bonus: $(BNAME)
 
 $(BNAME): $(BOFILES)
-	@$(CC) $(FLAGS) $(BOFILES) -o $(BNAME)
+	@$(CC) $(FLAGS) $(BOFILES) $(MLX_FLAGS) -o $(BNAME)
 	@echo "$(GREEN)So_long bonus compiled successfully!$(RESET)"
 
 clean:
